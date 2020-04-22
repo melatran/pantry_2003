@@ -43,6 +43,9 @@ class CookBook
     @recipes.map do |recipe|
       summary = Hash.new
       summary[:name] = recipe.name
+      if summary[:details][:ingredients] == nil
+        summary[:details][:ingredients] = []
+      end
       summary[:details][:ingredients] = sort_ingredient_name_and_amount(recipe)
       summary[:details][:total_calories] = recipe.total_calories
       summary
