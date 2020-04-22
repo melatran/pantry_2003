@@ -1,3 +1,5 @@
+require 'date'
+
 class CookBook
   attr_reader :recipes
 
@@ -23,4 +25,9 @@ class CookBook
       recipe.total_calories
     end
   end
+
+  def date
+    Date.today.strftime("%m-%d-%Y")
+  end
+
 end

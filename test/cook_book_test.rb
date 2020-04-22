@@ -1,5 +1,6 @@
 require 'minitest/autorun'
 require 'minitest/pride'
+require 'mocha/minitest'
 require './lib/pantry'
 require './lib/ingredient'
 require './lib/recipe'
@@ -62,5 +63,11 @@ class CookBookTest < Minitest::Test
     cookbook.add_recipe(recipe2)
 
     assert_equal recipe2, cookbook.highest_calorie_meal
+  end
+
+  def test_can_create_date
+    cookbook = CookBook.new
+    Date.stubs(:today).returns(Date.new(2020,04,22))
+    assert_equal "04-22-2020", cookbook.date
   end
 end
